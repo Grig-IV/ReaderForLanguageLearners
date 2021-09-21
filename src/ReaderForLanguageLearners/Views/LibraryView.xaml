@@ -6,7 +6,21 @@
         xmlns:local="clr-namespace:ReaderForLanguageLearners"
         mc:Ignorable="d"
         Title="RLL: Library" Height="720" Width="900">
-    <Grid>
-
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button Command="{Binding AddBookComand}" Width="100" Height="40" Margin="0 0 0 10" Padding="8">Add book</Button>
+        <ListView ItemsSource="{Binding Books}" Background="WhiteSmoke" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}">Title</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Author}">Author</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Year}">Year</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Language}">Language</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

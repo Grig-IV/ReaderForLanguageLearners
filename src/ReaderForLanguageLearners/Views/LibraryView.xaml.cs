@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using ReaderForLanguageLearners.Models;
+using ReaderForLanguageLearners.ViewModels;
+using System.Windows;
 
 namespace ReaderForLanguageLearners.Views
 {
@@ -7,6 +9,7 @@ namespace ReaderForLanguageLearners.Views
         public LibraryView()
         {
             InitializeComponent();
+            this.DataContext = new LibraryViewModel();
         }
     }
 }
