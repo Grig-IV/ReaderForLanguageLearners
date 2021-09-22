@@ -11,7 +11,7 @@ namespace ReaderForLanguageLearners.ViewModels
         private ILibraryModel _libraryModel = LibraryModel.Instance;
         private RelayCommand _addBookComand;
 
-        public ObservableCollection<IBookData> Books => _libraryModel.Books;
+        public ObservableCollection<IBook> Books => _libraryModel.Books;
 
         public RelayCommand AddBookComand
         {
@@ -24,10 +24,7 @@ namespace ReaderForLanguageLearners.ViewModels
                 };
                 if (openFileDialog.ShowDialog() == true)
                 {
-                    foreach (string bookFilePath in openFileDialog.FileNames)
-                    {
-                        _libraryModel.AddBook(bookFilePath);
-                    }
+                    _libraryModel.AddBooks(openFileDialog.FileNames);
                 }
             });
         }

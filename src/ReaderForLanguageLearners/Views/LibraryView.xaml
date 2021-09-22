@@ -16,8 +16,8 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Title}">Title</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Author}">Author</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Year}">Year</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Authors}">Authors</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}">Date</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Language}">Language</GridViewColumn>
                 </GridView>
             </ListView.View>

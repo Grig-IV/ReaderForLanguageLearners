@@ -11,4 +11,9 @@
     <Folder Include="Views\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FB2Library" Version="1.3.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.115" />
+  </ItemGroup>
+
 </Project>
