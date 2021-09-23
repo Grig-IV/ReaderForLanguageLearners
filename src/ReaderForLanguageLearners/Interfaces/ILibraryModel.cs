@@ -1,5 +1,4 @@
-﻿using ReaderForLanguageLearners.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace ReaderForLanguageLearners.Interfaces
@@ -8,6 +7,6 @@ namespace ReaderForLanguageLearners.Interfaces
     {
         ObservableCollection<IBook> Books { get; }
 
-        void AddBooks(IEnumerable<string> bookFilePaths);
+        void AddBooksAsync(IEnumerable<string> bookFilePaths);
     }
 }

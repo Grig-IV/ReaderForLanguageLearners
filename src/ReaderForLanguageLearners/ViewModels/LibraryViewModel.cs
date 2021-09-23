@@ -24,7 +24,7 @@ namespace ReaderForLanguageLearners.ViewModels
                 };
                 if (openFileDialog.ShowDialog() == true)
                 {
-                    _libraryModel.AddBooks(openFileDialog.FileNames);
+                    _libraryModel.AddBooksAsync(openFileDialog.FileNames);
                 }
             });
         }

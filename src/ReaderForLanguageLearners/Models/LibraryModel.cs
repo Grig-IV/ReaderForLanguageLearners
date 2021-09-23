@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ReaderForLanguageLearners.Models
@@ -30,10 +29,11 @@ namespace ReaderForLanguageLearners.Models
 
         public ObservableCollection<IBook> Books { get; }
 
-        public void AddBooks(IEnumerable<string> bookFilePaths)
+        public async void AddBooksAsync(IEnumerable<string> bookFilePaths)
         {
-            var createBookTasks = bookFilePaths.Where(s => Books.All(b => b.Source != s)).Select(s => CreateBook(s));
-            var newBooks = Task.WhenAll<IBook>(createBookTasks).Result;
+            var createBookTasks = bookFilePaths.Where(s => Books.All(b => b.Source != s))
+                                               .Select(s => Task.Run(() => CreateBook(s)));
+            var newBooks = await Task.WhenAll<IBook>(createBookTasks);
 
             using (var connection = new SQLiteConnection($"Data Source={DB_FILENAME}; Mode=ReadWrite"))
             {
@@ -48,9 +48,9 @@ namespace ReaderForLanguageLearners.Models
             }
         }
 
-        private async Task<IBook> CreateBook(string bookFilePath)
+        private IBook CreateBook(string bookFilePath)
         {
-            var bookXml = await System.IO.File.ReadAllTextAsync(bookFilePath);
+            var bookXml = System.IO.File.ReadAllText(bookFilePath);
             var bookFB2 = new FB2Reader().ReadAsync(bookXml).Result;
             var titleInfo = bookFB2.TitleInfo;
 
