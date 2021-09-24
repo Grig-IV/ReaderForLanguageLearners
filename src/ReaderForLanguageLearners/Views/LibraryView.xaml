@@ -13,6 +13,11 @@
         </Grid.RowDefinitions>
         <Button Command="{Binding AddBookComand}" Width="100" Height="40" Margin="0 0 0 10" Padding="8">Add book</Button>
         <ListView ItemsSource="{Binding Books}" Background="WhiteSmoke" Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick" />
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Title}">Title</GridViewColumn>

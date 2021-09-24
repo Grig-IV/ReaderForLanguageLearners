@@ -1,6 +1,7 @@
-﻿using ReaderForLanguageLearners.Models;
+﻿using ReaderForLanguageLearners.Interfaces;
 using ReaderForLanguageLearners.ViewModels;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ReaderForLanguageLearners.Views
 {
@@ -10,6 +11,13 @@ namespace ReaderForLanguageLearners.Views
         {
             InitializeComponent();
             this.DataContext = new LibraryViewModel();
+        }
+
+        private void ListViewItem_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var book = (IBook)(sender as ListViewItem).DataContext;
+            var bookReader = new BookReaderView(book.Source);
+            bookReader.Show();
         }
     }
 }
