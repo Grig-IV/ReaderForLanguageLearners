@@ -33,7 +33,7 @@ namespace ReaderForLanguageLearners.Models
         {
             var createBookTasks = bookFilePaths.Where(s => Books.All(b => b.Source != s))
                                                .Select(s => Task.Run(() => CreateBook(s)));
-            var newBooks = await Task.WhenAll<IBook>(createBookTasks);
+            var newBooks = await Task.WhenAll(createBookTasks);
 
             using (var connection = new SQLiteConnection($"Data Source={DB_FILENAME}; Mode=ReadWrite"))
             {

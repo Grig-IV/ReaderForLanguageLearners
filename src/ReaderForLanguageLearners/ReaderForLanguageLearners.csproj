@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Utils\" />
-    <Folder Include="Views\" />
+    <None Remove="RLL_DB.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
 
   <ItemGroup>
